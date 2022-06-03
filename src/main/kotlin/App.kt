@@ -4,4 +4,5 @@ class App: Kooby ({
     get("/test") {
         Message("Ok!")
     }
+
 })
