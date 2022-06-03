@@ -1,5 +1,7 @@
-import org.junit.jupiter.api.Assertions.assertEquals
+import com.fasterxml.jackson.databind.ObjectMapper
+import io.jooby.MockRouter
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 class Tests1 {
     @Test
@@ -9,6 +11,10 @@ class Tests1 {
 
     @Test
     fun test2() {
-        assertEquals(2 + 2, 5)
+        val mockRouter = MockRouter(App())
+        assertEquals(
+            Message("Ok!"),
+            mockRouter.get("/test").value(Message::class.java)
+        )
     }
 }
