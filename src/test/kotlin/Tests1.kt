@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.databind.ObjectMapper
 import io.jooby.MockRouter
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
