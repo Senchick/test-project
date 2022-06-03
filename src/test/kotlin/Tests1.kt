@@ -12,7 +12,7 @@ class Tests1 {
     fun test2() {
         val mockRouter = MockRouter(App())
         assertEquals(
-            Message("Ok!"),
+            Message("Ok2!"),
             mockRouter.get("/test").value(Message::class.java)
         )
     }
