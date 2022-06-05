@@ -11,11 +11,6 @@ pipeline {
     }
 
     stages {
-        stage("clone project") {
-            steps {
-                checkout scm
-            }
-        }
 
         stage("docker build") {
             steps {
