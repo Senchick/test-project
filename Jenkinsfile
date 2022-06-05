@@ -19,9 +19,7 @@ pipeline {
 
         stage("docker build") {
             steps {
-                dir ("docker/toolbox") {
-                    sh 'docker build --no-cache -t backend .'
-                }
+                sh 'docker build --no-cache -t backend test-project/'
             }
         }
         stage("docker delete old container") {
