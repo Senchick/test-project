@@ -27,5 +27,10 @@ pipeline {
                 sh 'docker run -d --privileged -p 8080:8080 --name backend backend'
             }
         }
+        stage("docker clean") {
+            steps {
+                sh 'echo y | docker image prune'
+            }
+        }
     }
 }
