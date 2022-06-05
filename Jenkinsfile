@@ -2,7 +2,7 @@
 // Run docker build
 properties([disableConcurrentBuilds()])
 
-node {
+pipeline {
     agent any
 
     options {
@@ -10,29 +10,26 @@ node {
         timestamps()
     }
 
-    def app
-
     stages {
-        stage("clone repository") {
+        stage("clone project") {
             steps {
                 checkout scm
             }
         }
+
         stage("docker build") {
             steps {
-                docker.build('backend', '--no-cache')
+                sh 'docker build --no-cache -t backend test-project/'
             }
         }
-        /* stage("docker delete old container") {
+        stage("docker delete old container") {
             steps {
                 sh 'docker rm -f backend'
             }
-        } */
+        }
         stage("docker run image") {
             steps {
-                docker.image('backend').withRun("--privileged -p 8080:8080") { c ->
-
-                }
+                sh 'docker run --privileged -p 8080:8080 backend'
             }
         }
     }
