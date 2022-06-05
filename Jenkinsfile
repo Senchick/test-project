@@ -24,7 +24,7 @@ pipeline {
         }
         stage("docker run image") {
             steps {
-                sh 'docker run -d --privileged -p 8080:8080 backend'
+                sh 'docker run -d --privileged -p 8080:8080 --name backend backend'
             }
         }
     }
