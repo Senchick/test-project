@@ -2,7 +2,7 @@
 // Run docker build
 properties([disableConcurrentBuilds()])
 
-pipeline {
+node {
     agent any
 
     options {
