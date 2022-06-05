@@ -1,3 +1,3 @@
-FROM gradle:6.8
+FROM gradle
 
 CMD gradle build
