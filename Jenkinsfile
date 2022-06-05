@@ -19,7 +19,7 @@ pipeline {
 
         stage("docker build") {
             steps {
-                dir ("test-project") {
+                dir ("test-project/") {
                     sh 'docker build --no-cache -t backend .'
                 }
             }
