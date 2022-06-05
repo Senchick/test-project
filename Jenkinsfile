@@ -19,7 +19,7 @@ pipeline {
         }
         stage("docker delete old container") {
             steps {
-                sh 'docker rm -f backend'
+                sh 'docker stop backend'
             }
         }
         stage("docker run image") {
