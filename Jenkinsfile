@@ -10,20 +10,29 @@ pipeline {
         timestamps()
     }
 
+    def app
+
     stages {
-        stage("docker build") {
+        stage("clone repository") {
             steps {
-                sh 'docker build --no-cache -t backend .'
+                checkout scm
             }
         }
-        stage("docker delete old container") {
+        stage("docker build") {
+            steps {
+                docker.build('backend', '--no-cache')
+            }
+        }
+        /* stage("docker delete old container") {
             steps {
                 sh 'docker rm -f backend'
             }
-        }
+        } */
         stage("docker run image") {
             steps {
-                sh 'docker run --privileged -p 8080:8080 backend'
+                docker.image('backend').withRun("--privileged -p 8080:8080") { c ->
+
+                }
             }
         }
     }
